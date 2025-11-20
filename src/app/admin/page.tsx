@@ -1,8 +1,9 @@
+import AddPostForm from "./AddPostForm"
 
 const AdminPage = () => {
   return (
     <div>
-      AdminPage
+      <AddPostForm />
     </div>
   )
 }
