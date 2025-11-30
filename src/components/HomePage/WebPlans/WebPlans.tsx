@@ -1,4 +1,4 @@
-import React from "react";
+import { FaCaretRight } from "react-icons/fa";
 
 const WebPlans = () => {
   return (
@@ -8,81 +8,64 @@ const WebPlans = () => {
           <h2 className="text-4xl md:text-5xl font-extrabold text-center bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-6">
             Web Plans
           </h2>
-          <p className="text-gray-600 text-center text-lg max-w-2xl mx-auto">
-            Choose the perfect plan for your needs. Whether you're just starting
-            out or looking to scale, we have a plan that's right for you.
+          <p className="text-gray-600 text-center text-lg mx-auto max-w-2xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+            quisquam facere excepturi, impedit officia perferendis.
           </p>
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Starter Plan</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              Starter Plan
+            </h3>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 1
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 1</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 2
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 2</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 3
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 3</span>
               </li>
             </ul>
           </div>
-
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 transform scale-105 border-2 border-green-500">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">Pro Plan</h3>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 1
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 1</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 2
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 2</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 3
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 3</span>
               </li>
             </ul>
           </div>
-
           <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Enterprise Plan</h3>
+            <h3 className="text-2xl font-bold text-gray-800 mb-4">
+              Enterprise Plan
+            </h3>
             <ul className="space-y-3 mb-6">
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 1
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 1</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 2
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 2</span>
               </li>
               <li className="flex items-center text-gray-600">
-                <svg className="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/>
-                </svg>
-                Feature 3
+                <FaCaretRight className="w-5 h-5 text-green-500 mr-2" />
+                <span>Feature 3</span>
               </li>
             </ul>
           </div>

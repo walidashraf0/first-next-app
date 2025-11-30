@@ -1,9 +1,9 @@
-import AddPostForm from "./AddPostForm"
+import AdminPostForm from "./AdminPostForm"
 
 const AdminPage = () => {
   return (
     <div>
-      <AddPostForm />
+      <AdminPostForm />
     </div>
   )
 }

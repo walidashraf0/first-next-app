@@ -1,8 +1,8 @@
 
-const AdminCommentsTable = () => {
+const AdminCommentsPage = () => {
   return (
-    <div>AdminCommentsTable</div>
+    <div>AdminCommentsPage</div>
   )
 }
 
-export default AdminCommentsTable
+export default AdminCommentsPage
