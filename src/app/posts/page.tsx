@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 const PostsPage = () => {
   const [posts, setPosts] = useState<TPost[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const getPosts = async () => {
     try {
       const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
@@ -18,8 +20,14 @@ const PostsPage = () => {
   };
 
   useEffect(() => {
-    getPosts();
+    const timer = setTimeout(() => {
+      getPosts();
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, []);
+
 
   return (
     <>
