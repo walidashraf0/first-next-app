@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 
 const PostsPage = () => {
   const [posts, setPosts] = useState<TPost[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const getPosts = async () => {
     try {
@@ -20,14 +19,8 @@ const PostsPage = () => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      getPosts();
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
+    getPosts();
   }, []);
-
 
   return (
     <>
