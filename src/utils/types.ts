@@ -1,8 +1,12 @@
 type TPost = {
-  userId: number,
-  id: number,
-  title: string,
-  body: string,
-}
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+};
 
-export type { TPost }
+interface ICreatePostDTO {
+  title: string;
+  body: string;
+}
+export type { TPost, ICreatePostDTO };
