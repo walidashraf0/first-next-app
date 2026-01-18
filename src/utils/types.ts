@@ -7,7 +7,7 @@ type TPost = {
 
 interface ICreatePostDTO {
   title: string;
-  body: string;
+  content: string;
 }
 
 interface IUpdatePostDTO {
