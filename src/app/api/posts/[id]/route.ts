@@ -18,23 +18,51 @@ export const GET = async (request: NextRequest, { params }: IGetPostProps) => {
 };
 
 export const PUT = async (request: NextRequest, { params }: IGetPostProps) => {
-  const { id } = await params;
-  const post = posts.find((p) => p.id === parseInt(id));
-  const data = (await request.json()) as IUpdatePostDTO;
-  if (!post) {
-    return NextResponse.json({ message: "Post not found" }, { status: 404 });
+  try {
+    const { id } = await params;
+    const post = await prisma.post.findUnique({
+      where: { id: parseInt(id) },
+    });
+    const data = (await request.json()) as IUpdatePostDTO;
+    if (!post) {
+      return NextResponse.json({ message: "Post not found" }, { status: 404 });
+    }
+    const updatedPost = await prisma.post.update({
+      where: { id: parseInt(id) },
+      data: {
+        title: data.title,
+        content: data.content,
+      },
+    });
+    return NextResponse.json(updatedPost, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 },
+    );
   }
-  return NextResponse.json({ message: "Post Updated" }, { status: 200 });
 };
 
 export const DELETE = async (
   request: NextRequest,
   { params }: IGetPostProps,
 ) => {
-  const { id } = await params;
-  const post = posts.find((p) => p.id === parseInt(id));
-  if (!post) {
-    return NextResponse.json({ message: "Post not found" }, { status: 404 });
+  try {
+    const { id } = await params;
+    const post = await prisma.post.findUnique({
+      where: { id: parseInt(id) },
+    });
+    if (!post) {
+      return NextResponse.json({ message: "Post not found" }, { status: 404 });
+    }
+    await prisma.post.delete({
+      where: { id: parseInt(id) },
+    });
+    return NextResponse.json({ message: "Post Deleted" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 },
+    );
   }
-  return NextResponse.json({ message: "Post Deleted" }, { status: 200 });
 };

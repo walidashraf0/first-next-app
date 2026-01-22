@@ -12,6 +12,6 @@ interface ICreatePostDTO {
 
 interface IUpdatePostDTO {
   title?: string;
-  body?: string;
+  content?: string;
 }
 export type { TPost, ICreatePostDTO, IUpdatePostDTO };
