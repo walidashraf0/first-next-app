@@ -14,4 +14,11 @@ interface IUpdatePostDTO {
   title?: string;
   content?: string;
 }
-export type { TPost, ICreatePostDTO, IUpdatePostDTO };
+
+interface IRegisterUserDto {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export type { TPost, ICreatePostDTO, IUpdatePostDTO, IRegisterUserDto };
