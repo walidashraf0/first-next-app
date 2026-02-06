@@ -1,5 +1,6 @@
 import { User } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
+import { generateToken } from "@/utils/generateToken";
 import { IRegisterUserDto } from "@/utils/types";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
@@ -49,7 +50,9 @@ export const POST = async (request: NextRequest) => {
       },
     });
 
-    return NextResponse.json(newUserData, { status: 201 });
+    const token = generateToken(newUserData);
+
+    return NextResponse.json({ ...newUserData, token }, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: "Internal Server Error" },

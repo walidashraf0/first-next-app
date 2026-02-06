@@ -5,6 +5,12 @@ type TPost = {
   body: string;
 };
 
+type TUserPayload = {
+  id: number;
+  username: string;
+  isAdmin: boolean;
+};
+
 interface ICreatePostDTO {
   title: string;
   content: string;
@@ -25,4 +31,13 @@ interface ILoginUserDto {
   password: string;
 }
 
-export type { TPost, ICreatePostDTO, IUpdatePostDTO, IRegisterUserDto, ILoginUserDto };
+
+
+export type {
+  TPost,
+  TUserPayload,
+  ICreatePostDTO,
+  IUpdatePostDTO,
+  IRegisterUserDto,
+  ILoginUserDto,
+};
