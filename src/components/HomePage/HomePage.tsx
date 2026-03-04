@@ -1,13 +1,14 @@
-import Hero from "./Hero/Hero"
-import WebPlans from "./WebPlans/WebPlans"
+import Hero from "./Hero/Hero";
+import WebPlans from "./WebPlans/WebPlans";
 
 const HomePage = () => {
+  console.log("Home Page is Called");
   return (
     <div>
-        <Hero />
-        <WebPlans />
+      <Hero />
+      <WebPlans />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
