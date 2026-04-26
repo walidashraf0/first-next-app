@@ -1,7 +1,7 @@
 import { User } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
-import { generateToken } from "@/utils/generateToken";
-import { IRegisterUserDto } from "@/utils/types";
+import { setCookie } from "@/utils/generateToken";
+import { IRegisterUserDto, TUserPayload } from "@/utils/types";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import z from "zod";
@@ -50,9 +50,18 @@ export const POST = async (request: NextRequest) => {
       },
     });
 
-    const token = generateToken(newUserData);
+    const newUserPayload: TUserPayload = {
+      id: newUserData.id,
+      username: newUserData.username,
+      isAdmin: newUserData.isAdmin,
+    };
 
-    return NextResponse.json({ ...newUserData, token }, { status: 201 });
+    const cookie = setCookie(newUserPayload);
+
+    return NextResponse.json(
+      { ...newUserData, message: "User registered successfully" },
+      { status: 201, headers: { "Set-Cookie": cookie } },
+    );
   } catch (error) {
     return NextResponse.json(
       { message: "Internal Server Error" },
