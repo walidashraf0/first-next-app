@@ -26,12 +26,17 @@ interface IRegisterUserDto {
   email: string;
   password: string;
 }
+
 interface ILoginUserDto {
   email: string;
   password: string;
 }
 
-
+interface IUpdateUserDto {
+  username?: string;
+  email?: string;
+  password?: string;
+}
 
 export type {
   TPost,
@@ -40,4 +45,5 @@ export type {
   IUpdatePostDTO,
   IRegisterUserDto,
   ILoginUserDto,
+  IUpdateUserDto,
 };
