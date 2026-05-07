@@ -98,6 +98,12 @@ export const PUT = async (request: NextRequest, { params }: Props) => {
     const body = (await request.json()) as IUpdateUserDto;
 
     if (body.password) {
+      if (body.password.length < 6) {
+        return NextResponse.json(
+          { message: "Password must be at least 6 characters long!" },
+          { status: 400 },
+        );
+      }
       const salt = await bcrypt.genSalt(10);
       body.password = await bcrypt.hash(body.password, salt);
     }

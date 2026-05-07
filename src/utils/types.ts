@@ -38,6 +38,11 @@ interface IUpdateUserDto {
   password?: string;
 }
 
+interface ICreateNewCommentDto {
+  text: string;
+  postId: number;
+}
+
 export type {
   TPost,
   TUserPayload,
@@ -46,4 +51,5 @@ export type {
   IRegisterUserDto,
   ILoginUserDto,
   IUpdateUserDto,
+  ICreateNewCommentDto,
 };
