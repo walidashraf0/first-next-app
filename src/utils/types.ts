@@ -43,6 +43,10 @@ interface ICreateNewCommentDto {
   postId: number;
 }
 
+interface IUpdateCommentDto {
+  text: string;
+}
+
 export type {
   TPost,
   TUserPayload,
@@ -52,4 +56,5 @@ export type {
   ILoginUserDto,
   IUpdateUserDto,
   ICreateNewCommentDto,
+  IUpdateCommentDto,
 };
