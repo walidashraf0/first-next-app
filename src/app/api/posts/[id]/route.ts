@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/prisma";
-import { posts } from "@/utils/data";
 import { IUpdatePostDTO } from "@/utils/types";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -10,6 +9,13 @@ interface IGetPostProps {
 export const GET = async (request: NextRequest, { params }: IGetPostProps) => {
   const post = await prisma.post.findUnique({
     where: { id: parseInt(params.id) },
+    include: {
+      comments: {
+        orderBy: {
+          createdAt: "asc",
+        },
+      },
+    },
   });
   if (!post) {
     return NextResponse.json({ message: "Post not found" }, { status: 404 });
