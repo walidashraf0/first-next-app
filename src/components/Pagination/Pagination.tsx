@@ -5,8 +5,8 @@ const Pagination = () => {
       <div className="border border-gray-700 px-4 font-bold text-xl cursor-pointer hover:bg-gray-200 transition py-1 text-gray-700">
         Prev
       </div>
-      {pages.map((page) => (
-        <div className="border border-gray-700 px-4 font-bold text-xl cursor-pointer hover:bg-gray-200 transition py-1 text-gray-700">
+      {pages.map((page, key) => (
+        <div key={key} className="border border-gray-700 px-4 font-bold text-xl cursor-pointer hover:bg-gray-200 transition py-1 text-gray-700">
           {page}
         </div>
       ))}

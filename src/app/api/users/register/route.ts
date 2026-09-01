@@ -55,6 +55,7 @@ export const POST = async (request: NextRequest) => {
       username: newUserData.username,
       isAdmin: newUserData.isAdmin,
     };
+    console.log(newUserPayload + "newUserPayload");
 
     const cookie = setCookie(newUserPayload);
 
