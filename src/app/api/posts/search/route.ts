@@ -8,7 +8,10 @@ export const GET = async (request: NextRequest) => {
     if (searchText) {
       posts = await prisma.post.findMany({
         where: {
-          title: searchText,
+          title: {
+            equals: searchText,  // script => javascript
+            mode: "insensitive",  // Java => Java - java
+          },
         },
       });
     } else {
