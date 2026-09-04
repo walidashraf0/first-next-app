@@ -14,6 +14,7 @@ export const DELETE = async (request: NextRequest, { params }: Props) => {
     const { id } = await params;
     const user = await prisma.user.findUnique({
       where: { id: parseInt(id) },
+      include: { comments: true }
     });
     if (!user) {
       return NextResponse.json({ message: "User not found!" }, { status: 404 });
@@ -23,6 +24,10 @@ export const DELETE = async (request: NextRequest, { params }: Props) => {
 
     if (userAuthToken !== null && userAuthToken.id === user.id) {
       await prisma.user.delete({ where: { id: parseInt(params.id) } });
+      // const commentIds = user?.comments.map((comment) => comment.id)
+      // await prisma.comment.deleteMany({  
+      //   where: { id: { in: commentIds } }
+      // })
       return NextResponse.json(
         { message: "User deleted successfully!" },
         { status: 200 },
@@ -34,6 +39,7 @@ export const DELETE = async (request: NextRequest, { params }: Props) => {
       { status: 403 },
     );
   } catch (error) {
+    console.log(error)
     return NextResponse.json(
       {
         message: "Internal Server Error!",

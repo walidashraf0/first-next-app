@@ -1,6 +1,7 @@
 import { Post } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { ICreatePostDTO } from "@/utils/types";
+import { verifyToken } from "@/utils/verifyToken";
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
@@ -24,6 +25,10 @@ export const GET = async (request: NextRequest) => {
 
 export const POST = async (request: NextRequest) => {
   try {
+    const user = await verifyToken(request);
+    if (!user) {
+      return NextResponse.json({ message: "Unauthorized!" }, { status: 401 });
+    }
     const body = (await request.json()) as ICreatePostDTO;
 
     const createPostSchema = z.object({
@@ -48,7 +53,7 @@ export const POST = async (request: NextRequest) => {
       data: {
         title: body.title,
         content: body.content,
-        authorId: 1,
+        authorId: user.id,
       },
     });
     return NextResponse.json(newPost, { status: 201 });
