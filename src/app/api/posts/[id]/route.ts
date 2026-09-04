@@ -57,12 +57,17 @@ export const DELETE = async (
     const { id } = await params;
     const post = await prisma.post.findUnique({
       where: { id: parseInt(id) },
+      include: { comments: true },
     });
     if (!post) {
       return NextResponse.json({ message: "Post not found" }, { status: 404 });
     }
     await prisma.post.delete({
       where: { id: parseInt(id) },
+    });
+    const commentIds: number[] = post?.comments.map((comment) => comment.id);
+    await prisma.comment.deleteMany({
+      where: { id: { in: commentIds } },
     });
     return NextResponse.json({ message: "Post Deleted" }, { status: 200 });
   } catch (error) {

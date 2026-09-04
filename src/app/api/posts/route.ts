@@ -48,12 +48,15 @@ export const POST = async (request: NextRequest) => {
       data: {
         title: body.title,
         content: body.content,
+        authorId: 1,
       },
     });
     return NextResponse.json(newPost, { status: 201 });
-  } catch (error) {}
-  return NextResponse.json(
-    { message: "Internal Server Error!" },
-    { status: 500 },
-  );
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { message: "Internal Server Error!" },
+      { status: 500 },
+    );
+  }
 };
