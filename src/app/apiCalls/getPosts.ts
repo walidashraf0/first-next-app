@@ -1,4 +1,5 @@
 import { Post } from "@/generated/prisma/client";
+import axios from "axios";
 
 export const getPostsData = async (
   pageNumber: string | undefined,
@@ -13,4 +14,15 @@ export const getPostsData = async (
   }
 
   return response.json();
+};
+
+// Get Posts data based on search text
+export const getSearchPostsData = async (
+  searchText: string,
+): Promise<Post[]> => {
+  const res = await axios.get(
+    `http://localhost:3000/api/posts/search?searchText=${searchText}`,
+  );
+
+  return res.data;
 };
