@@ -1,9 +1,15 @@
+import { Comment, Post, User } from "@/generated/prisma/client";
+
+type CommentWithUser = Comment & { user: User };
+
 type TPost = {
-  userId: number;
   id: number;
+  userId: number;
   title: string;
   body: string;
 };
+
+type SinglePostWithComments = Post & { comments: CommentWithUser[] };
 
 type TUserPayload = {
   id: number;
@@ -49,6 +55,8 @@ interface IUpdateCommentDto {
 
 export type {
   TPost,
+  CommentWithUser,
+  SinglePostWithComments,
   TUserPayload,
   ICreatePostDTO,
   IUpdatePostDTO,

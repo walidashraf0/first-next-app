@@ -3,12 +3,13 @@ import { IUpdatePostDTO } from "@/utils/types";
 import { NextRequest, NextResponse } from "next/server";
 
 interface IGetPostProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export const GET = async (request: NextRequest, { params }: IGetPostProps) => {
+  const { id } = await params;
   const post = await prisma.post.findUnique({
-    where: { id: parseInt(params.id) },
+    where: { id: parseInt(id) },
     include: {
       comments: {
         orderBy: {
@@ -20,7 +21,7 @@ export const GET = async (request: NextRequest, { params }: IGetPostProps) => {
   if (!post) {
     return NextResponse.json({ message: "Post not found" }, { status: 404 });
   }
-  return NextResponse.json({ message: post }, { status: 200 });
+  return NextResponse.json({ post }, { status: 200 });
 };
 
 export const PUT = async (request: NextRequest, { params }: IGetPostProps) => {

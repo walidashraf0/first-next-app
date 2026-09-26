@@ -4,9 +4,7 @@ import { verifyToken } from "@/utils/verifyToken";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
 // Update Comment

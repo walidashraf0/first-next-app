@@ -3,8 +3,15 @@ import posts from "./posts.json";
 
 
 async function main() {
+  const postsToSeed = posts.map((post) => ({
+    ...post,
+    authorId: 1,
+    published: true,
+    publishedAt: new Date(),
+  }));
+
   await prisma.post.createMany({
-    data: posts,
+    data: postsToSeed,
     skipDuplicates: true,
   });
 

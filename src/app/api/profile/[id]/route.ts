@@ -6,7 +6,7 @@ import { IUpdateUserDto } from "@/utils/types";
 import bcrypt from "bcryptjs";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export const DELETE = async (request: NextRequest, { params }: Props) => {
@@ -23,7 +23,7 @@ export const DELETE = async (request: NextRequest, { params }: Props) => {
     const userAuthToken = verifyToken(request);
 
     if (userAuthToken !== null && userAuthToken.id === user.id) {
-      await prisma.user.delete({ where: { id: parseInt(params.id) } });
+      await prisma.user.delete({ where: { id: parseInt(id) } });
       // const commentIds = user?.comments.map((comment) => comment.id)
       // await prisma.comment.deleteMany({  
       //   where: { id: { in: commentIds } }
