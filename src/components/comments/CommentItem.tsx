@@ -18,7 +18,7 @@ const CommentItem = ({ comment }: CommentItemProps) => {
               <span className="text-sm font-semibold text-slate-800">
                 {comment.user.username}
               </span>
-            ) : null}
+            ) : "Unknown User"}
             <span className="rounded-full bg-indigo-50 px-2 py-1 text-[10px] font-medium uppercase tracking-[0.12em] text-indigo-600">
               Comment
             </span>

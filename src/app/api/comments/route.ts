@@ -20,6 +20,11 @@ export const POST = async (request: NextRequest) => {
         postId,
         userId: user.id,
       },
+      include: {
+        user: {
+          select: { username: true },
+        },
+      },
     });
 
     return NextResponse.json(newComment, { status: 201 });

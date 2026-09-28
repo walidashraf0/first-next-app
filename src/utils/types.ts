@@ -1,6 +1,6 @@
 import { Comment, Post, User } from "@/generated/prisma/client";
 
-type CommentWithUser = Comment & { user: User };
+type CommentWithUser = Comment & { user: Pick<User, "username"> };
 
 type TPost = {
   id: number;

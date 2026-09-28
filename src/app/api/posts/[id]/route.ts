@@ -15,6 +15,11 @@ export const GET = async (request: NextRequest, { params }: IGetPostProps) => {
         orderBy: {
           createdAt: "asc",
         },
+        include: {
+          user: {
+            select: { username: true },
+          },
+        },
       },
     },
   });

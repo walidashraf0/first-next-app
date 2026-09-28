@@ -2,12 +2,14 @@
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import type { CommentWithUser } from "@/utils/types";
 
 interface IAddCommentFormProps {
   postId?: number;
+  onCommentAdded: (comment: CommentWithUser) => void;
 }
 
-const AddCommentForm = ({ postId }: IAddCommentFormProps) => {
+const AddCommentForm = ({ postId, onCommentAdded }: IAddCommentFormProps) => {
   const [commentText, setCommentText] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -20,14 +22,23 @@ const AddCommentForm = ({ postId }: IAddCommentFormProps) => {
     if (commentText.trim() === "") return toast.error("Comment is required");
 
     try {
-      await axios.post(`http://localhost:3000/api/comments`, {
-        text: commentText.trim(),
-        postId,
-      });
+      const response = await axios.post<CommentWithUser>(
+        `http://localhost:3000/api/comments`,
+        {
+          text: commentText.trim(),
+          postId,
+        },
+      );
+      onCommentAdded(response.data);
       setCommentText("");
       toast.success("Comment added successfully");
-    } catch (error: any) {
-      toast.error(error?.response?.data?.message || error?.message || "Something went wrong");
+    } catch (error: unknown) {
+      const message = axios.isAxiosError<{ message?: string }>(error)
+        ? error.response?.data?.message || error.message
+        : error instanceof Error
+          ? error.message
+          : "Something went wrong";
+      toast.error(message);
     }
   };
 
